@@ -1,0 +1,22 @@
+API 키
+8734fc709d64dfb44b9633fadef5c6ed
+
+API 읽기 액세스 토큰
+eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NzM0ZmM3MDlkNjRkZmI0NGI5NjMzZmFkZWY1YzZlZCIsInN1YiI6IjY0YjY1M2NhNzg1NzBlMDEwMDhhYTZiNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2TTziiywGt5fCuskP_d24yJi0K25JP7bGYEIgqp6m1s
+
+API URL
+영화 최근 목록
+https://api.themoviedb.org/3/movie/latest?api_key=8734fc709d64dfb44b9633fadef5c6ed&language=en-US
+
+영화 상세정보
+https://api.themoviedb.org/3/movie/{movie_id}?api_key=8734fc709d64dfb44b9633fadef5c6ed&language=en-US
+
+영화 리뷰
+https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=8734fc709d64dfb44b9633fadef5c6ed&language=en-US
+
+영화 트렌드
+https://api.themoviedb.org/3/movie/latest?api_key=8734fc709d64dfb44b9633fadef5c6ed&language=en-US
+
+이미지 가져오는 법
+https://image.tmdb.org/t/p/original(이미지사이즈)/이미지이름~
+https://image.tmdb.org/t/p/w500(이미지사이즈)/이미지이름~
