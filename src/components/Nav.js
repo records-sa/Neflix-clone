@@ -28,7 +28,7 @@ export default function Nav() {
       />
       <img
         alt="User logged"
-        src="https://cdn.dribbble.com/users/2095589/screenshots/4166422/media/36bbe20664731ec8dfee1cd7d7033b07.png"
+        src="https://img.icons8.com/?size=512&id=gYI9v0NbFgxC&format=png"
         className="nav_avatar"
       />
     </nav>
