@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Nav.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Nav() {
   const [show, setShow] = useState(false);
+  const [SerchValue, setSerchValue] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -18,6 +21,11 @@ export default function Nav() {
     };
   }, []);
 
+  const handleChange = (e) => {
+    setSerchValue(e.target.value);
+    navigate(`/search?q=${e.target.value}`);
+  };
+
   return (
     <nav className={`nav ${show && "nav_black"}`}>
       <img
@@ -26,6 +34,15 @@ export default function Nav() {
         className="nav_logo"
         onClick={() => window.location.reload()}
       />
+
+      <input
+        value={SerchValue}
+        onChange={handleChange}
+        className="nav_input"
+        type="text"
+        placeholder="Serch the movie"
+      />
+
       <img
         alt="User logged"
         src="https://img.icons8.com/?size=512&id=gYI9v0NbFgxC&format=png"
