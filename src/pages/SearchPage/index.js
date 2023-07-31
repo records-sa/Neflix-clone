@@ -1,9 +1,11 @@
 import axios from "../../api/axios";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./SearchPage.css";
+import { useDebounce } from "../../hooks/useDebounce";
 
 export default function SearchPage() {
+  const navigate = useNavigate();
   const [searchResults, setSearchResults] = useState([]);
 
   const useQuery = () => {
@@ -12,12 +14,13 @@ export default function SearchPage() {
 
   let query = useQuery();
   const searchTerm = query.get("q");
+  const debounceSerchTerm = useDebounce(searchTerm, 500);
 
   useEffect(() => {
-    if (searchTerm) {
+    if (debounceSerchTerm) {
       fetchSearchMovie(searchTerm);
     }
-  }, [searchTerm]);
+  }, [debounceSerchTerm]);
 
   const fetchSearchMovie = async (searchTerm) => {
     try {
@@ -38,8 +41,11 @@ export default function SearchPage() {
             const movieImageUrl =
               "https://image.tmdb.org/t/p/w500" + movie.backdrop_path;
             return (
-              <div className="movie">
-                <div className="movie_column-poster">
+              <div className="movie" key={movie.id}>
+                <div
+                  onClick={() => navigate(`/${movie.id}`)}
+                  className="movie_column-poster"
+                >
                   <img
                     src={movieImageUrl}
                     alt="movie"
@@ -54,7 +60,7 @@ export default function SearchPage() {
     ) : (
       <section className="no_results">
         <div className="no-results-text">
-          <p>Sorry, we couldn't find any results for "{searchTerm}"</p>
+          <p>Sorry, we couldn't find any results for "{debounceSerchTerm}"</p>
           <p>Suggestions :</p>
           <ul>
             <li>Try different keywords</li>
